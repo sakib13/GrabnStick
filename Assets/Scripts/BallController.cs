@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private Rigidbody rb;
+    //Serialize field attribute will allow you to check values on runtime. Mainly for playtesting
+    [SerializeField] private Rigidbody rb;       
     [SerializeField] private float rollSpeed;
     [SerializeField] private Transform cameraTransform;
+
+
 
     private float size = 1;
     void Start()
