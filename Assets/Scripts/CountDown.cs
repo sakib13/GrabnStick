@@ -2,22 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 public class CountDown : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float timer = 3.0f;
-    public string nextSceneName;
+    [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] float remainingTime;
+    
     void Start()
     {
-        StartCoroutine(EndSceneAfterTime());
+        //StartCoroutine(EndSceneAfterTime());
     }
-
-    IEnumerator EndSceneAfterTime()
+    void Update()
     {
-        // Wait for the specified amount of time
-        yield return new WaitForSeconds(timer);
+        remainingTime -= Time.deltaTime;
+        int minutes = Mathf.FloorToInt(remainingTime / 60);
+        int seconds = Mathf.FloorToInt(remainingTime % 60);
+        timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        // Load the next scene
-        SceneManager.LoadScene(nextSceneName);
+
+
+
     }
+   
 }
