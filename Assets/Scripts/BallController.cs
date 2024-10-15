@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class BallController : MonoBehaviour
 {
     // Start is called before the first frame update
-    //Serialize field attribute will allow you to check values on runtime. Mainly for playtesting
+    
     [SerializeField] private Rigidbody rb;       
     [SerializeField] private float rollSpeed;
     [SerializeField] private Transform cameraTransform;
