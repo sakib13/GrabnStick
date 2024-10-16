@@ -10,12 +10,14 @@ public class BallController : MonoBehaviour
     [SerializeField] private Rigidbody rb;       
     [SerializeField] private float rollSpeed;
     [SerializeField] private Transform cameraTransform;
+    public ScoreManager scoreManager;
 
     public AudioSource impactSound;
     private float size = 1;
     void Start()
     {
-        
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class BallController : MonoBehaviour
         {
             collision.transform.parent = transform;
             size += collision.transform.localScale.magnitude;
-         
+            scoreManager.AddPoint();
             impactSound.Play();
         }
     }

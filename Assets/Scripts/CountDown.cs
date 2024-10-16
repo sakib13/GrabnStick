@@ -9,21 +9,24 @@ public class CountDown : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] float remainingTime;
+    public TextMeshProUGUI gameOver;
+    
     
     void Start()
     {
-        //StartCoroutine(EndSceneAfterTime());
+
     }
     void Update()
     {
         remainingTime -= Time.deltaTime;
-        int minutes = Mathf.FloorToInt(remainingTime / 60);
-        int seconds = Mathf.FloorToInt(remainingTime % 60);
-        timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timer.text = remainingTime.ToString("F0");
 
-
-
+        if (remainingTime < 30)
+        {
+            gameOver.gameObject.SetActive(true);
+        }
 
     }
    
+
 }
