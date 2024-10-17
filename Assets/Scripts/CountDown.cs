@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 public class CountDown : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class CountDown : MonoBehaviour
         remainingTime -= Time.deltaTime;
         timer.text = remainingTime.ToString("F0");
 
-        if (remainingTime < 30)
+        if (remainingTime < 1)
         {
             gameOver.gameObject.SetActive(true);
         }
