@@ -12,11 +12,14 @@ public class BallController : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     public ScoreManager scoreManager;
 
+    
     public AudioSource impactSound;
     private float size = 1;
     void Start()
     {
+        
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+       
 
     }
 
@@ -29,12 +32,16 @@ public class BallController : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Prop") && collision.transform.localScale.magnitude <= size)
-        {
-            collision.transform.parent = transform;
-            size += collision.transform.localScale.magnitude;
-            scoreManager.AddPoint();
-            impactSound.Play();
-        }
+
+       
+        
+            if (collision.gameObject.CompareTag("Prop") && collision.transform.localScale.magnitude <= size)
+            {
+                collision.transform.parent = transform;
+                size += collision.transform.localScale.magnitude;
+                scoreManager.AddPoint();
+                impactSound.Play();
+            }
+        
     }
 }

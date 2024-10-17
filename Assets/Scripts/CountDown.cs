@@ -11,11 +11,12 @@ public class CountDown : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] float remainingTime;
     public TextMeshProUGUI gameOver;
+    public Button restartButton;
+
     
     
     void Start()
     {
-
     }
     void Update()
     {
@@ -24,10 +25,22 @@ public class CountDown : MonoBehaviour
 
         if (remainingTime < 1)
         {
-            gameOver.gameObject.SetActive(true);
+            GameOver();
         }
 
     }
-   
+
+    public void GameOver()
+    {
+        gameOver.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+
+    }
+    public void RestartGame()
+    {
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
 }
