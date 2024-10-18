@@ -11,21 +11,30 @@ public class CountDown : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] float remainingTime;
     public TextMeshProUGUI gameOver;
+    public TextMeshProUGUI winningMessage;
     public Button restartButton;
+    public Button playAgain;
 
-    
+    public ScoreManager scoreManager;
     
     void Start()
     {
+        
     }
     void Update()
     {
         remainingTime -= Time.deltaTime;
         timer.text = remainingTime.ToString("F0");
 
-        if (remainingTime < 1)
+        if (remainingTime < 1 && scoreManager.score < 10)
         {
             GameOver();
+        }
+        else if (remainingTime < 1 && scoreManager.score > 10)
+        {
+        
+            winningMessage.gameObject.SetActive(true);
+            playAgain.gameObject.SetActive(true);
         }
 
     }
