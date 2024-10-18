@@ -38,9 +38,10 @@ public class BallController : MonoBehaviour
         
             if (collision.gameObject.CompareTag("Prop") && collision.transform.localScale.magnitude <= size)
             {
+                hittingparticle.Play();
                 collision.transform.parent = transform;
                 size += collision.transform.localScale.magnitude;
-                hittingparticle.Play();
+                
                 scoreManager.AddPoint();
                 impactSound.Play();
             }
