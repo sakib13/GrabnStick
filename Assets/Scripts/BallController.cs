@@ -11,6 +11,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private float rollSpeed;
     [SerializeField] private Transform cameraTransform;
     public ScoreManager scoreManager;
+    public ParticleSystem hittingparticle;
 
     
     public AudioSource impactSound;
@@ -39,6 +40,7 @@ public class BallController : MonoBehaviour
             {
                 collision.transform.parent = transform;
                 size += collision.transform.localScale.magnitude;
+                hittingparticle.Play();
                 scoreManager.AddPoint();
                 impactSound.Play();
             }

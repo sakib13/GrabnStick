@@ -23,20 +23,31 @@ public class CountDown : MonoBehaviour
     }
     void Update()
     {
-        remainingTime -= Time.deltaTime;
-        timer.text = remainingTime.ToString("F0");
-
-        if (remainingTime < 1 && scoreManager.score < 10)
+        if (remainingTime < 1)
         {
-            GameOver();
-        }
-        else if (remainingTime < 1 && scoreManager.score > 10)
-        {
-        
-            winningMessage.gameObject.SetActive(true);
-            playAgain.gameObject.SetActive(true);
+            scoreManager.isGameActive = false;
         }
 
+        if (scoreManager.isGameActive)
+        {
+            remainingTime -= Time.deltaTime;
+            timer.text = remainingTime.ToString("F0");
+        }
+        else
+        {
+            // Time's up!
+
+            if (scoreManager.score < 10)
+            {
+                GameOver();
+            }
+            else if (scoreManager.score >= 10)
+            {
+                
+                winningMessage.gameObject.SetActive(true);
+                playAgain.gameObject.SetActive(true);
+            }
+        }
     }
 
     public void GameOver()
