@@ -12,12 +12,14 @@ public class BallController : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     public ScoreManager scoreManager;
     public ParticleSystem hittingparticle;
+ 
 
     
     public AudioSource impactSound;
     private float size = 1;
     void Start()
     {
+
         
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
        
@@ -27,9 +29,13 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        Vector3 movement = (input.z * cameraTransform.forward) + (input.x * cameraTransform.right);
-        rb.AddForce(movement * rollSpeed * Time.fixedDeltaTime * size);
+
+        
+        
+            Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            Vector3 movement = (input.z * cameraTransform.forward) + (input.x * cameraTransform.right);
+            rb.AddForce(movement * rollSpeed * Time.fixedDeltaTime * size);
+        
     }
     void OnCollisionEnter(Collision collision)
     {

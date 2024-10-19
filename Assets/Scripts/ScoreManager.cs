@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         isGameActive = true;
-        
+
         score = 0;
         textUI.text = score.ToString();
 
@@ -30,4 +30,6 @@ public class ScoreManager : MonoBehaviour
         score = score + 1;
         textUI.text = score.ToString();
     }
+
+    
 }
