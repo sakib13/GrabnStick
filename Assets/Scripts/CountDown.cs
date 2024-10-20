@@ -37,7 +37,7 @@ public class CountDown : MonoBehaviour
         {
             // Time's up!
 
-            if (scoreManager.score < 10)
+            if (scoreManager.score < 35)
             {
                 GameOver();
             }
